@@ -16,7 +16,6 @@ namespace HealthCare.Appointments.Api.Models
 
         private Document() { }
 
-        public Guid ScheduleId { get; private set; }
         public Guid PatientId { get; private set; }
         public int DocumentTypeId { get; private set; }
     }

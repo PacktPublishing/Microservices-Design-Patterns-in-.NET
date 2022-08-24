@@ -1,5 +1,8 @@
 using HealthCare.Appointments.Api.Constants;
 using HealthCare.Appointments.Api.Service;
+using MediatR;
+using System.Reflection;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,8 @@ builder.Services.AddHttpClient();
 builder.Services.AddSingleton<ApiEndpoints>();
 builder.Services.AddTransient(typeof(IHttpRepository<>), typeof(HttpRepository<>));
 
+builder.Services.AddMediatR(typeof(Program));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

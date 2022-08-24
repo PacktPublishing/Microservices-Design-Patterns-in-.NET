@@ -7,7 +7,6 @@ namespace HealthCare.Appointments.Api.Models
     {
         public Appointment(Guid id,
           int appointmentTypeId,
-          Guid scheduleId,
           Guid doctorId,
           Guid patientId,
           Guid roomId,
@@ -18,7 +17,6 @@ namespace HealthCare.Appointments.Api.Models
 {
             Id = id;
             AppointmentTypeId = appointmentTypeId;
-            ScheduleId = scheduleId;
             DoctorId = doctorId;
             PatientId = patientId;
             RoomId = roomId;
@@ -30,7 +28,6 @@ namespace HealthCare.Appointments.Api.Models
 
         private Appointment() { }
 
-        public Guid ScheduleId { get; private set; }
         public Guid PatientId { get; private set; }
         public Guid RoomId { get; private set; }
         public Guid DoctorId { get; private set; }
