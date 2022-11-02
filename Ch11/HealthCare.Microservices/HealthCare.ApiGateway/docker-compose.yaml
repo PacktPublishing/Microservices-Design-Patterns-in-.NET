@@ -1,6 +1,11 @@
-﻿namespace HealthCare.ApiGateway
-{
-    public class docker_compose
-    {
-    }
-}
+﻿mobilegw:
+    image: healthcare/healtcareapigw:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/ApiGateways/ApiGw-Base/Dockerfile
+
+  webappgw:
+    image: healthcare/healtcareapigw:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/ApiGateways/ApiGw-Base/Dockerfile
