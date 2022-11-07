@@ -8,6 +8,10 @@ namespace HealthCare.Appointments.Api.Models
         {
            
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlite($"Data Source=Appointments.db");
+
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<AppointmentType> AppointmentTypes { get; set; }
         public DbSet<Doctor> Doctors { get; set; }

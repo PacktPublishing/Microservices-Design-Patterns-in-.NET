@@ -4,7 +4,7 @@ using System;
 
 namespace HealthCare.Appointments.Api.Models
 {
-    public class Doctor : BaseEntity<Guid>, IAggregateRoot
+    public class Doctor : BaseEntity<Guid>
     {
         public Doctor(Guid id, string name)
         {
