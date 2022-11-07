@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentCreatedRabbitMqC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentCreatedAzureServiceBusConsumerConsole", "AppointmentCreatedAzureServiceBusConsumer\AppointmentCreatedAzureServiceBusConsumerConsole.csproj", "{83EA82A0-D7D1-4876-B5C8-B3EF54C936A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureServiceBusConsumerWorkerService", "WorkerService1\AzureServiceBusConsumerWorkerService.csproj", "{444C14A5-FB7D-4057-8597-3B5B233B6D58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureServiceBusConsumerWorkerService", "AzureServiceBusConsumerWorkerService\AzureServiceBusConsumerWorkerService.csproj", "{091A250D-1AE7-450B-A18A-B14B09CD51B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{83EA82A0-D7D1-4876-B5C8-B3EF54C936A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83EA82A0-D7D1-4876-B5C8-B3EF54C936A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83EA82A0-D7D1-4876-B5C8-B3EF54C936A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{444C14A5-FB7D-4057-8597-3B5B233B6D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{444C14A5-FB7D-4057-8597-3B5B233B6D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{444C14A5-FB7D-4057-8597-3B5B233B6D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{444C14A5-FB7D-4057-8597-3B5B233B6D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091A250D-1AE7-450B-A18A-B14B09CD51B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091A250D-1AE7-450B-A18A-B14B09CD51B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091A250D-1AE7-450B-A18A-B14B09CD51B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091A250D-1AE7-450B-A18A-B14B09CD51B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
