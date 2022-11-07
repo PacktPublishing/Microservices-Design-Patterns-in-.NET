@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class PatientsRepository : GenericRepository<Patient>, IPatientsRepository
 {
-    public PatientsRepository(ApplicationDatabaseContext context) : base(context)
+    public PatientsRepository(PatientsDatabaseContext context) : base(context)
     { }
 
     public async Task<Patient> GetByTaxIdAsync(string id)

@@ -6,11 +6,18 @@ namespace HealthCare.Patients.Api.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly ApplicationDatabaseContext _context;
+        protected readonly PatientsDatabaseContext _context;
 
-        public GenericRepository(ApplicationDatabaseContext context)
+        public GenericRepository(PatientsDatabaseContext context)
         {
             this._context = context;
+        }
+
+        public async Task Delete(int id)
+        {
+            var entity = await GetAsync(id);
+            _context.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<T>> GetAllAsync()
@@ -43,6 +50,18 @@ namespace HealthCare.Patients.Api.Repositories
             }
 
             return await _context.Set<T>().FindAsync(id);
+        }
+
+        public async Task Insert(T entity)
+        {
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(T entity)
+        {
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 

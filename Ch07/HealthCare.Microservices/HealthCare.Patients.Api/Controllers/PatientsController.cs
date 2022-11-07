@@ -9,12 +9,13 @@ namespace HealthCare.Patients.Api.Controllers
     [ApiController]
     public class PatientsController : ControllerBase
     {
-        private readonly ApplicationDatabaseContext _context;
+        private readonly PatientsDatabaseContext _context;
 
-        public PatientsController(ApplicationDatabaseContext context)
+        public PatientsController(PatientsDatabaseContext context)
         {
             _context = context;
         }
+
         // GET: api/Patients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
@@ -24,6 +25,18 @@ namespace HealthCare.Patients.Api.Controllers
                 return NotFound();
             }
             return await _context.Patients.ToListAsync();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Patient>> InsertPatient(Patient patient)
+        {
+            if (patient == null)
+            {
+                return BadRequest();
+            }
+            await _context.AddAsync(patient);
+            await _context.SaveChangesAsync();
+            return patient;
         }
     }
 

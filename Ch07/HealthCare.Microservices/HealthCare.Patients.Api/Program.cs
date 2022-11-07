@@ -1,10 +1,11 @@
 
+using HealthCare.Patients.Api.Models;
 using HealthCare.Patients.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddDbContext<PatientsDatabaseContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
