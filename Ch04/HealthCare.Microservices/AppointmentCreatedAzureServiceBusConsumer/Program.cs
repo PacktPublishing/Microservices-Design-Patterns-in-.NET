@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Azure.Messaging.ServiceBus;
-using Microsoft.Extensions.Configuration;
 
 Console.WriteLine("Azure Service Bus Message Consumer");
 

@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  healthcare.apigateway:
+    image: ${DOCKER_REGISTRY-}healthcareapigateway
+    build:
+      context: .
+      dockerfile: HealthCare.ApiGateway/Dockerfile
+
+  mobilegw:
+    image: healthcare/healtcareapigw:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: HealthCare.ApiGateway/Dockerfile
+
+  webappgw:
+    image: healthcare/healtcareapigw:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: HealthCare.ApiGateway/Dockerfile

@@ -1,6 +1,0 @@
-﻿namespace HealthCare.ApiGateway
-{
-    public class docker_compose
-    {
-    }
-}
