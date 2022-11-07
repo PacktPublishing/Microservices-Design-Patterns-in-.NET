@@ -8,6 +8,9 @@ public class PatientsDbContext : DbContext
     {
 
     }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlite($"Data Source=Patients.db");
     public DbSet<Patient> Patients { get; set; }
     public DbSet<Document> Documents { get; set; }
 }

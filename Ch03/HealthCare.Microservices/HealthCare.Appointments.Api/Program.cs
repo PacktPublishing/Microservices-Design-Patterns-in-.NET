@@ -7,10 +7,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("AppointmentsDatabaseConnection");
-builder.Services.AddDbContext<AppointmentsDbContext>(opt => {
-    opt.UseSqlServer(connectionString);
-});
+builder.Services.AddDbContext<AppointmentsDbContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -18,8 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<ApiEndpoints>();
 builder.Services.AddTransient(typeof(IHttpRepository<>), typeof(HttpRepository<>));
-builder.Services.AddTransient<IDoctorsApiRepository, DoctorsApiRepository>();
-builder.Services.AddTransient<IPatientsApiRepository, PatientsApiRepository>();
+builder.Services.AddHttpClient<IDoctorsApiRepository, DoctorsApiRepository>();
+builder.Services.AddHttpClient<IPatientsApiRepository, PatientsApiRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -34,7 +31,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.MapControllers();
 

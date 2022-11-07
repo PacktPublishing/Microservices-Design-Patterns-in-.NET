@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Ch02/HealthCare.DDD.Microservices/HealthCare.Appointments.Api/Appointments.db-wal
+/Ch02/HealthCare.DDD.Microservices/HealthCare.Appointments.Api/Appointments.db-shm
+/Ch03/HealthCare.Microservices/HealthCare.Appointments.Api/Appointments.db-wal
+/Ch03/HealthCare.Microservices/HealthCare.Appointments.Api/Appointments.db-shm
+/Ch03/HealthCare.Microservices/HealthCare.Doctors.Api/Doctors.db-wal
+/Ch03/HealthCare.Microservices/HealthCare.Doctors.Api/Doctors.db-shm

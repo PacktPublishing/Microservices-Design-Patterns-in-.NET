@@ -1,22 +1,23 @@
 ﻿using HealthCare.SharedAssets;
 using System;
 
-namespace HealthCare.Appointments.Api.Models
+namespace HealthCare.Documents.Api.Models
 {
     public class Document : BaseEntity<Guid>
     {
         public Document(Guid id,
           Guid patientId,
-          int documentTypeId)
+          string name,
+          string path)
         {
             Id = id;
-            DocumentTypeId = documentTypeId;
             PatientId = patientId;
+            Path = path;
+            Name = name;
         }
 
-        private Document() { }
-
         public Guid PatientId { get; private set; }
-        public int DocumentTypeId { get; private set; }
+        public string Name { get; private set; }
+        public string Path { get; private set; }
     }
 }

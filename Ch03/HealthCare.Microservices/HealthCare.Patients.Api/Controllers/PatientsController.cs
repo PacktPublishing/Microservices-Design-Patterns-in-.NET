@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HealthCare.Patients.Api.Models;
 using Grpc.Net.Client;
 using HealthCare.Documents.Api.Protos;
+using HealthCare.Patients.Api.Dtos;
 
 namespace HealthCare.Patients.Api.Controllers
 {
@@ -16,10 +17,12 @@ namespace HealthCare.Patients.Api.Controllers
     public class PatientsController : ControllerBase
     {
         private readonly PatientsDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public PatientsController(PatientsDbContext context)
+        public PatientsController(PatientsDbContext context, IConfiguration configuration)
         {
             _context = context;
+            this._configuration = configuration;
         }
 
         // GET: api/Patients
@@ -31,10 +34,15 @@ namespace HealthCare.Patients.Api.Controllers
 
         // GET: api/Patients/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Patient>> GetPatient(Guid id)
+        public async Task<ActionResult<PatientDto>> GetPatient(Guid id)
         {
             var patient = await _context.Patients
-                .Include(q => q.Documents)
+                .Select(q => new PatientDto { 
+                    Id = id,
+                    LastName = q.LastName,
+                    FirstName = q.FirstName,
+                    DateOfBirth = q.DateOfBirth
+                })
                 .FirstOrDefaultAsync(q => q.Id == id);
 
             if (patient == null)
@@ -42,15 +50,14 @@ namespace HealthCare.Patients.Api.Controllers
                 return NotFound();
             }
 
-            using (var channel = GrpcChannel.ForAddress("ADDRESS_OF_SERVICE"))
-            {
-                var client = new DocumentService.DocumentServiceClient(channel);
-                foreach (var doc in patient.Documents)
-                {
-                    var req = new DocumentId { Id = doc.Id.ToString() };
-                    var document = client.Get(req);
-                }
-            }
+            using var channel = GrpcChannel.ForAddress(_configuration["DocumentsService"]);
+            var client = new DocumentService.DocumentServiceClient(channel);
+            var response = await client.GetAllAsync(new PatientId { PatientId_ = id.ToString() });
+            patient.Documents = response.Documents.Select(q => new DocumentDto { 
+                Name = q.Name,
+                Path = q.Path,
+            })
+            .ToList();
 
             return patient;
         }

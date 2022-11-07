@@ -21,7 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -32,12 +32,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthCare.SharedAssets\HealthCare.SharedAssets.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Protobuf Include="..\HealthCare.Documents.Api\Protos\document-search-service.proto" GrpcServices="Client">
-      <Link>Protos\document-search-service.proto</Link>
-    </Protobuf>
   </ItemGroup>
 
 </Project>

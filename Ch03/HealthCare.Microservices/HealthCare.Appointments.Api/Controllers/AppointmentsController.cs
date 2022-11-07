@@ -18,7 +18,11 @@ namespace HealthCare.Appointments.Api.Controllers
         private readonly ApiEndpoints _apiEndpoints;
         private readonly IMapper _mapper;
 
-        public AppointmentsController(AppointmentsDbContext context, IDoctorsApiRepository doctorsApiRepository, IPatientsApiRepository patientsApiRepository, ApiEndpoints apiEndpoints, IMapper mapper)
+        public AppointmentsController(AppointmentsDbContext context, 
+            IDoctorsApiRepository doctorsApiRepository, 
+            IPatientsApiRepository patientsApiRepository, 
+            ApiEndpoints apiEndpoints, 
+            IMapper mapper)
         {
             _context = context;
             this._doctorsApiRepository = doctorsApiRepository;
@@ -45,7 +49,7 @@ namespace HealthCare.Appointments.Api.Controllers
                 return NotFound();
             }
 
-            var doctor = await _doctorsApiRepository.Get(_apiEndpoints.GetDocumentsApi(), appointment.DoctorId.ToString());
+            var doctor = await _doctorsApiRepository.Get(_apiEndpoints.GetDoctorsApi(), appointment.DoctorId.ToString());
             var patient = await _patientsApiRepository.Get(_apiEndpoints.GetPatientsApi(), appointment.PatientId.ToString());
             var appointmentDto = _mapper.Map<AppointmentDetailsDto>(appointment);
             appointmentDto.Doctor = _mapper.Map<DoctorDto>(doctor);
