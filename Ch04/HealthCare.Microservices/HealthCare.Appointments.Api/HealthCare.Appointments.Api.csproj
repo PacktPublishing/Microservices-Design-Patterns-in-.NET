@@ -37,10 +37,4 @@
     <ProjectReference Include="..\HealthCare.SharedAssets\HealthCare.SharedAssets.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Protobuf Include="..\HealthCare.Documents.Api\Protos\document-search-service.proto" GrpcServices="Client">
-      <Link>Protos\document-search-service.proto</Link>
-    </Protobuf>
-  </ItemGroup>
-
 </Project>

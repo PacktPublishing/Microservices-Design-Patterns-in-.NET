@@ -1,9 +1,10 @@
-using WorkerService1;
+using AzureServiceBusConsumerWorkerService;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
         services.AddHostedService<Worker>();
+        services.AddScoped<IAzureServiceBusConsumer, AzureServiceBusConsumer>();
     })
     .Build();
 

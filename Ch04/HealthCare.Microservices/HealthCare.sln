@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCare.SharedAssets", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentCreatedRabbitMqConsumer", "AppointmentCreatedConsumer\AppointmentCreatedRabbitMqConsumer.csproj", "{94150790-D616-4C69-9721-F3595A81617D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentCreatedAzureServiceBusConsumer", "AppointmentCreatedAzureServiceBusConsumer\AppointmentCreatedAzureServiceBusConsumer.csproj", "{83EA82A0-D7D1-4876-B5C8-B3EF54C936A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentCreatedAzureServiceBusConsumerConsole", "AppointmentCreatedAzureServiceBusConsumer\AppointmentCreatedAzureServiceBusConsumerConsole.csproj", "{83EA82A0-D7D1-4876-B5C8-B3EF54C936A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService1", "WorkerService1\WorkerService1.csproj", "{444C14A5-FB7D-4057-8597-3B5B233B6D58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureServiceBusConsumerWorkerService", "WorkerService1\AzureServiceBusConsumerWorkerService.csproj", "{444C14A5-FB7D-4057-8597-3B5B233B6D58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
