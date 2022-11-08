@@ -8,7 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>();
 
-builder.Services.AddHealthChecks();
 builder.Services.AddHealthChecks()
     .AddCheck<ApiHealthCheck>("ApiHealth")
     .AddDbContextCheck<ApplicationDbContext>("DatabaseHealth", tags: new[] { "ready" });
@@ -28,7 +27,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.MapHealthChecks("/healthz", new HealthCheckOptions
 {
