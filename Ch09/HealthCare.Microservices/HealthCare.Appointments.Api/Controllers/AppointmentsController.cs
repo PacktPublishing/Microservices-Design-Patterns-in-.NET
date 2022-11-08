@@ -14,14 +14,12 @@ namespace HealthCare.Appointments.Api.Controllers
     {
         private readonly AppointmentsDbContext _context;
         private readonly IPatientsApiRepository _patientsApiRepository;
-        private readonly ApiEndpoints _apiEndpoints;
         private readonly IMapper _mapper;
 
-        public AppointmentsController(AppointmentsDbContext context, IPatientsApiRepository patientsApiRepository, ApiEndpoints apiEndpoints, IMapper mapper)
+        public AppointmentsController(AppointmentsDbContext context, IPatientsApiRepository patientsApiRepository, IMapper mapper)
         {
             _context = context;
             _patientsApiRepository = patientsApiRepository;
-            this._apiEndpoints = apiEndpoints;
             this._mapper = mapper;
         }
 

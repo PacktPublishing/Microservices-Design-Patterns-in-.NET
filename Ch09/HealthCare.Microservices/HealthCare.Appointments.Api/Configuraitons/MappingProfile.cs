@@ -9,7 +9,6 @@ namespace HealthCare.Appointments.Api.Configuraitons
         public MappingProfile()
         {
             CreateMap<Patient, PatientDto>();
-            CreateMap<Doctor, DoctorDto>();
             CreateMap<Appointment, AppointmentDetailsDto>();
         }
     }

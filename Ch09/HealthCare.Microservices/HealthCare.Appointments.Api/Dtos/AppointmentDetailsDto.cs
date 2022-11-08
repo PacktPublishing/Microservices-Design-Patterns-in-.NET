@@ -5,7 +5,6 @@ namespace HealthCare.Appointments.Api.Dtos
     {
         public PatientDto Patient { get; set; }
         public Guid PatientId { get;  set; }
-        public DoctorDto Doctor { get; set; }
         public Guid DoctorId { get;  set; }
         public int AppointmentTypeId { get;  set; }
 
