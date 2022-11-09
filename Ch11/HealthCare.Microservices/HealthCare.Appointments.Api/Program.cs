@@ -9,10 +9,7 @@ using Polly.Extensions.Http;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("AppointmentsDatabaseConnection");
-builder.Services.AddDbContext<AppointmentsDbContext>(opt => {
-    opt.UseSqlServer(connectionString);
-});
+builder.Services.AddDbContext<AppointmentsDbContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
