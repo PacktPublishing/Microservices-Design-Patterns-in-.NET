@@ -1,17 +1,28 @@
 ﻿using HealthCare.Appointments.Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthCare.Appointments.Api.Repositories
 {
     public class AppointmentRepository : IAppointmentRepository
     {
-        public Task<Appointment> Add(Appointment appointment)
+        private readonly AppointmentsDbContext _context;
+
+        public AppointmentRepository(AppointmentsDbContext context)
         {
-            throw new NotImplementedException();
+            this._context = context;
+        }
+        public async Task<Appointment> Add(Appointment appointment)
+        {
+            await _context.AddAsync(appointment);
+            await _context.SaveChangesAsync();
+            return appointment;
         }
 
-        public Task<bool> Delete(string id)
+        public async Task Delete(string id)
         {
-            throw new NotImplementedException();
+            var appointment = await Get(id);
+            _context.Remove(appointment);
+            await _context.SaveChangesAsync();
         }
 
         public Task<bool> Exists(string id)
@@ -19,19 +30,23 @@ namespace HealthCare.Appointments.Api.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Appointment> Get(string id)
+        public async Task<Appointment> Get(string id)
         {
-            throw new NotImplementedException();
+            var appointment = await _context.FindAsync<Appointment>(id);
+            return appointment;
         }
 
         public Task<List<Appointment>> GetAll()
         {
-            throw new NotImplementedException();
+            var appointments = _context.Appointments.ToListAsync();
+            return appointments;
         }
 
-        public Task Update(Appointment appointment)
+        public async Task Update(Appointment appointment)
         {
-            throw new NotImplementedException();
+            _context.Update(appointment);
+            await _context.SaveChangesAsync();
         }
     }
+
 }

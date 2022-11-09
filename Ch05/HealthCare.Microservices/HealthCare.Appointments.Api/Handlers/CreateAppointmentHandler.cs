@@ -48,11 +48,13 @@ namespace HealthCare.Appointments.Api.Handlers
                 Date = newAppointment.Start
             };
 
+            // Uncomment when third party services are configured and available. See appsettings.json
+
             // Publish to RabbitMQ with MassTransit
-            await _publishEndpoint.Publish(appointmentMessage);
+            //await _publishEndpoint.Publish(appointmentMessage);
 
             // Publish to Azure Service Bus
-            await _messageBus.PublishMessage(appointmentMessage, "appointments");
+            //await _messageBus.PublishMessage(appointmentMessage, "appointments");
 
             return newAppointment;
         }

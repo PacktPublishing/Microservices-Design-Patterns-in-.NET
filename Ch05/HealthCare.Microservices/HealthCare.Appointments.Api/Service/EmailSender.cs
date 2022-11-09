@@ -1,4 +1,4 @@
-﻿using HealthCare.Appointments.Api.Models;
+﻿using HealthCare.Appointments.Api.Configuraitons;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;

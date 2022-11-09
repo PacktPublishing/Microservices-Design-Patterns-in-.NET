@@ -1,10 +1,10 @@
 using HealthCare.Appointments.Api.Constants;
 using HealthCare.Appointments.Api.Service;
 using MediatR;
-using HealthCare.Appointments.Api.Models;
 using HealthCare.Appointments.Api.Repositories;
 using HealthCare.Appointments.Api.Services;
 using MassTransit;
+using HealthCare.Appointments.Api.Configuraitons;
 
 var builder = WebApplication.CreateBuilder(args);
 

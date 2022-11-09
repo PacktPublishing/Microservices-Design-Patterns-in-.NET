@@ -1,5 +1,5 @@
-﻿using HealthCare.Appointments.Api.Commands;
-using HealthCare.Appointments.Api.Models;
+﻿using HealthCare.Appointments.Api.Models;
+using HealthCare.Appointments.Api.Queries;
 using HealthCare.Appointments.Api.Repositories;
 using MediatR;
 

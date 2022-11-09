@@ -8,7 +8,7 @@ namespace HealthCare.Appointments.Api.Repositories
         Task<Appointment> Get(string id);
         Task<List<Appointment>> GetAll();
         Task<Appointment> Add(Appointment appointment);
-        Task<bool> Delete(string id);
+        Task Delete(string id);
         Task Update(Appointment appointment);
         Task<bool> Exists(string id);
     }

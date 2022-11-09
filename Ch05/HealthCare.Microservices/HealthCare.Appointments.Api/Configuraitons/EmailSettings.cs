@@ -1,4 +1,4 @@
-﻿namespace HealthCare.Appointments.Api.Models
+﻿namespace HealthCare.Appointments.Api.Configuraitons
 {
     public class EmailSettings
     {
