@@ -13,14 +13,7 @@
       "UpstreamHttpMethod": [
         "GET",
         "POST"
-      ],
-      "RateLimitOptions": {
-        "ClientWhitelist": [],
-        "EnableRateLimiting": true,
-        "Period": "5s",
-        "PeriodTimespan": 1,
-        "Limit": 1
-      }
+      ]
     },
     {
       "DownstreamPathTemplate": "/api/Patients/{id}",
@@ -75,7 +68,8 @@
         "get-patient",
         "get-patient-appointments"
       ],
-      "UpstreamPathTemplate": "/get-patient-details/{id}"
+      "UpstreamPathTemplate": "/get-patient-details/{id}",
+      "Aggregator": "PatientAppointmentAggregator"
     }
   ],
   "FileCacheOptions": {
@@ -83,12 +77,6 @@
     "Region": "SomeRegionName"
   },
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5245",
-    "RateLimitOptions": {
-      "DisableRateLimitHeaders": false,
-      "QuotaExceededMessage": "Too many requests!!!",
-      "HttpStatusCode": 429,
-      "ClientIdHeader": "ClientId"
-    }
+    "BaseUrl": "http://localhost:5227"
   }
 }

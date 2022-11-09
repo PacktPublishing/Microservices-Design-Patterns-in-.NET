@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCare.Patients.Api", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCare.ApiGateway", "HealthCare.ApiGateway\HealthCare.ApiGateway.csproj", "{5BB2C0AA-D47B-4F77-B355-9007A195C859}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{870E5AEA-A935-4C22-9C91-7D027AE0E320}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCare.ApiGateway.WebClient", "HealthCare.ApiGateway.WebClient\HealthCare.ApiGateway.WebClient.csproj", "{340019B2-DCF6-4A7D-A0D4-A6EBA45B5CAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCare.ApiGateway.MobileClient", "HealthCare.ApiGateway.MobileClient\HealthCare.ApiGateway.MobileClient.csproj", "{E73AD7DF-0737-4DE5-8EFF-75E190EF0C5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +37,14 @@ Global
 		{5BB2C0AA-D47B-4F77-B355-9007A195C859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BB2C0AA-D47B-4F77-B355-9007A195C859}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BB2C0AA-D47B-4F77-B355-9007A195C859}.Release|Any CPU.Build.0 = Release|Any CPU
-		{870E5AEA-A935-4C22-9C91-7D027AE0E320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{870E5AEA-A935-4C22-9C91-7D027AE0E320}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{870E5AEA-A935-4C22-9C91-7D027AE0E320}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{870E5AEA-A935-4C22-9C91-7D027AE0E320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340019B2-DCF6-4A7D-A0D4-A6EBA45B5CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340019B2-DCF6-4A7D-A0D4-A6EBA45B5CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340019B2-DCF6-4A7D-A0D4-A6EBA45B5CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340019B2-DCF6-4A7D-A0D4-A6EBA45B5CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E73AD7DF-0737-4DE5-8EFF-75E190EF0C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E73AD7DF-0737-4DE5-8EFF-75E190EF0C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E73AD7DF-0737-4DE5-8EFF-75E190EF0C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E73AD7DF-0737-4DE5-8EFF-75E190EF0C5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

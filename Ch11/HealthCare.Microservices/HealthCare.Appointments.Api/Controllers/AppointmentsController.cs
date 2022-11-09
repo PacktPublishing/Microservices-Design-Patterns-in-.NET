@@ -49,6 +49,17 @@ namespace HealthCare.Appointments.Api.Controllers
             return appointmentDto;
         }
 
+        // GET: api/Appointments/user/{id}
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<List<Appointment>>> GetAppointmentsByUser(Guid id)
+        {
+            var appointments = await _context.Appointments
+                .Where(q => q.PatientId == id)
+                .ToListAsync();
+
+            return appointments;
+        }
+
         // PUT: api/Appointments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
