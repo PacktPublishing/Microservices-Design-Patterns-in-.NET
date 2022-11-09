@@ -21,8 +21,11 @@ namespace HealthCare.Appointments.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CreateAppointmentCommand createAppointmentCommand)
         {
+            // Send appointment information to create handler
             var appointment = await _mediator.Send(createAppointmentCommand);
+            //Publish AppointmentCreated event to all listeners
             await _mediator.Publish(new AppointmentCreated(appointment));
+            // return success code to caller
             return StatusCode(201);
         }
 
@@ -40,18 +43,6 @@ namespace HealthCare.Appointments.Api.Controllers
         {
             var appointment = await _mediator.Send(new GetAppointmentByIdQuery(id));
             return Ok(appointment);
-        }
-
-        // PUT api/<AppointmentsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<AppointmentsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

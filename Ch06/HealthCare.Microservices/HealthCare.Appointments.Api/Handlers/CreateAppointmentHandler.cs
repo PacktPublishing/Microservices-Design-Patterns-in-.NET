@@ -47,10 +47,10 @@ namespace HealthCare.Appointments.Api.Handlers
             };
 
             // Publish to RabbitMQ with MassTransit
-            await _publishEndpoint.Publish(appointmentMessage);
+            //await _publishEndpoint.Publish(appointmentMessage);
 
             // Publish to Azure Service Bus
-            await _messageBus.PublishMessage(appointmentMessage, "appointments");
+            //await _messageBus.PublishMessage(appointmentMessage, "appointments");
 
             return newAppointment;
         }

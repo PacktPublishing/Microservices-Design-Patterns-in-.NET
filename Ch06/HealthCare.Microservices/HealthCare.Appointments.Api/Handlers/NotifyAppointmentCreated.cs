@@ -11,27 +11,32 @@ namespace HealthCare.Appointments.Api.Handlers
     {
         private readonly IEmailSender _emailSender;
         private readonly IPatientsRepository _patientsRepository;
+        private readonly ILogger<NotifyAppointmentCreated> _logger;
 
-        public NotifyAppointmentCreated(IEmailSender emailSender, IPatientsRepository patientsRepository)
+        public NotifyAppointmentCreated(IEmailSender emailSender, IPatientsRepository patientsRepository, ILogger<NotifyAppointmentCreated> logger)
         {
             this._emailSender = emailSender;
             this._patientsRepository = patientsRepository;
+            this._logger = logger;
         }
         public async Task Handle(AppointmentCreated notification, CancellationToken cancellationToken)
         {
-            var patient = await _patientsRepository.Get(notification.Appointment.PatientId.ToString());
-            string emailAddress = patient.EmailAddress;
+            
+            _logger.LogInformation("Handling Email notification");
+            
+            // Get patient record via Patients API call
+            
+            // Create Email Message
+            //var email = new Email
+            //{
+            //    Body = $"Appointment Created for {notification.Appointment.Start}",
+            //    From = "noreply@appointments.com",
+            //    Subject = "Appointment Created",
+            //    To = patient.EmailAddress
+            //};
 
-            // Send Email Here
-            var email = new Email
-            {
-                Body = $"Appointment Created for {notification.Appointment.Start}",
-                From = "noreply@appointments.com",
-                Subject = "Appointment Created",
-                To = emailAddress
-            };
-
-            await _emailSender.SendEmail(email);
+            // Uncomment when email sender is configured
+            //await _emailSender.SendEmail(email);
         }
     }
 }

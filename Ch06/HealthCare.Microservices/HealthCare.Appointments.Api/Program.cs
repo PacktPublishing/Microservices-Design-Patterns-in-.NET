@@ -5,10 +5,13 @@ using HealthCare.Appointments.Api.Repositories;
 using HealthCare.Appointments.Api.Services;
 using MassTransit;
 using HealthCare.SharedAssets.Emails;
+using HealthCare.Appointments.Api.Models;
+using HealthCare.Appointments.Api.Configuraitons;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<AppointmentsDbContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -16,7 +19,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 
-builder.Services.AddMediatR(typeof(Program));
+builder.Services.Configure<DatabaseSettings>(
+    builder.Configuration.GetSection("AppointmentsDatabase"));
+builder.Services.AddSingleton<AppointmentsEventStoreService>();
+
 builder.Services.AddSingleton<ApiEndpoints>();
 
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
@@ -24,12 +30,13 @@ builder.Services.AddScoped<IPatientsRepository, PatientsRepository>();
 builder.Services.AddScoped<IMessagePublisher, MessagePublisher>();
 
 builder.Services.AddTransient(typeof(IHttpRepository<>), typeof(HttpRepository<>));
-builder.Services.AddTransient<IDoctorsApiRepository, DoctorsApiRepository>();
 builder.Services.AddTransient<IPatientsApiRepository, PatientsApiRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+builder.Services.AddMediatR(typeof(Program));
 
 builder.Services.AddMassTransit(x =>
 {
