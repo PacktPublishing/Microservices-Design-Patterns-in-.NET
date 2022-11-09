@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>();
 
 builder.Services.AddHealthChecks()
-    .AddCheck<ApiHealthCheck>("ApiHealth")
+    .AddCheck<HealthCheck>("ApiHealth")
     .AddDbContextCheck<ApplicationDbContext>("DatabaseHealth", tags: new[] { "ready" });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -28,19 +28,19 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.MapHealthChecks("/healthz", new HealthCheckOptions
+app.MapHealthChecks("/healthcheck", new HealthCheckOptions
 {
     AllowCachingResponses = false,
     ResultStatusCodes =
     {
+        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable,
         [HealthStatus.Healthy] = StatusCodes.Status200OK,
         [HealthStatus.Degraded] = StatusCodes.Status200OK,
-        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
     },
-    ResponseWriter = WriteJsonResponse
+    ResponseWriter = JsonResponse
 });
 
-app.MapHealthChecks("/healthz/ready", new HealthCheckOptions
+app.MapHealthChecks("/healthcheck/ready", new HealthCheckOptions
 {
     Predicate = healthCheck => healthCheck.Tags.Contains("ready"),
     AllowCachingResponses = false,
@@ -50,10 +50,10 @@ app.MapHealthChecks("/healthz/ready", new HealthCheckOptions
         [HealthStatus.Degraded] = StatusCodes.Status200OK,
         [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
     },
-    ResponseWriter = WriteJsonResponse
+    ResponseWriter = JsonResponse
 });
 
-app.MapHealthChecks("/healthz/live", new HealthCheckOptions
+app.MapHealthChecks("/healthcheck/live", new HealthCheckOptions
 {
     Predicate = healthCheck => false,
     AllowCachingResponses = false,
@@ -63,14 +63,14 @@ app.MapHealthChecks("/healthz/live", new HealthCheckOptions
         [HealthStatus.Degraded] = StatusCodes.Status200OK,
         [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
     },
-    ResponseWriter = WriteJsonResponse
+    ResponseWriter = JsonResponse
 });
 
 
 
 app.Run();
 
-static Task WriteJsonResponse(HttpContext context, HealthReport healthReport)
+static Task JsonResponse(HttpContext context, HealthReport healthReport)
 {
     context.Response.ContentType = "application/json; charset=utf-8";
     var options = new JsonWriterOptions { Indented = true };

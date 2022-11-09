@@ -2,37 +2,37 @@
 kind: Pod
 metadata:
   labels:
-    test: liveness
+    test: liveness-api
   name: liveness-http
 
 spec:
   ports:
-  - name: liveness-port
+  - name: api-port
     containerPort: 8080
     hostPort: 8080
   containers:
 
-  - name: liveness
+  - name: liveness-api
     image: registry.k8s.io/liveness
     args:
     - /server
 
     livenessProbe:
       httpGet:
-        path: /healthz/live
-        port: liveness-port
+        path: /healthcheck/live
+        port: api-port
       initialDelaySeconds: 3
       failureThreshold: 1
       periodSeconds: 3
     startupProbe:
       httpGet:
-        path: /healthz/ready
-        port: liveness-port
+        path: /healthcheck/ready
+        port: api-port
       failureThreshold: 30
       periodSeconds: 10
     readinessProbe:
       httpGet:
-        path: /healthz/ready
-        port: liveness-port
+        path: /healthcheck/ready
+        port: api-port
       failureThreshold: 30
       periodSeconds: 10

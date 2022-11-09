@@ -1,20 +1,21 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-public class ApiHealthCheck : IHealthCheck
+public class HealthCheck : IHealthCheck
 {
     public Task<HealthCheckResult> CheckHealthAsync(
         HealthCheckContext context, CancellationToken cancellationToken = default)
     {
-        var isHealthy = true;
-        // custom logic as needed. If logic fails, change the value of isHealthy 
-        if (isHealthy)
+        var healthy = true;
+        if (healthy)
         {
+            // additional custom logic when the health is confirmed.
             return Task.FromResult(
-                HealthCheckResult.Healthy("A healthy result."));
+                HealthCheckResult.Healthy("Service is healthy"));
         }
 
+        // additional custom logic when the api is not healthy 
         return Task.FromResult(
             new HealthCheckResult(
-                context.Registration.FailureStatus, "An unhealthy result."));
+                context.Registration.FailureStatus, "Service is unhealthy"));
     }
 }
