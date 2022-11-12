@@ -1,10 +1,25 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Values;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+
+var authenticationProviderKey = "IdentityServerApiKey";
+
+builder.Services.AddAuthentication()
+.AddJwtBearer(authenticationProviderKey, x =>
+{
+    x.Authority = “https://localhost:5005”; // IDENTITY SERVER URL
+                         //x.RequireHttpsMetadata = false;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = false
+    };
+});
+
 builder.Services.AddOcelot(builder.Configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

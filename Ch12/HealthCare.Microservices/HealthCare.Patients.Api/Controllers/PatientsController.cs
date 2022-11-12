@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HealthCare.Patients.Api.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HealthCare.Patients.Api.Controllers
 {
