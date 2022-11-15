@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCare.Patients.Api", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCare.ApiGateway", "HealthCare.ApiGateway\HealthCare.ApiGateway.csproj", "{5BB2C0AA-D47B-4F77-B355-9007A195C859}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCare.Auth", "HealthCare.Auth\HealthCare.Auth.csproj", "{FFAB1191-6609-406F-8F8C-23E95D927C29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCare.Auth", "..\HealthCare.Auth\HealthCare.Auth.csproj", "{72D62259-EFBF-4F34-8CF1-D10DABF59CFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{5BB2C0AA-D47B-4F77-B355-9007A195C859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BB2C0AA-D47B-4F77-B355-9007A195C859}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BB2C0AA-D47B-4F77-B355-9007A195C859}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FFAB1191-6609-406F-8F8C-23E95D927C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FFAB1191-6609-406F-8F8C-23E95D927C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FFAB1191-6609-406F-8F8C-23E95D927C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FFAB1191-6609-406F-8F8C-23E95D927C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D62259-EFBF-4F34-8CF1-D10DABF59CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D62259-EFBF-4F34-8CF1-D10DABF59CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D62259-EFBF-4F34-8CF1-D10DABF59CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D62259-EFBF-4F34-8CF1-D10DABF59CFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
