@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  healthcare.apigateway:
+    image: ${DOCKER_REGISTRY-}healthcareapigateway
+    build:
+      context: .
+      dockerfile: HealthCare.ApiGateway/Dockerfile
+
+  healthcare.appointments.api:
+    image: ${DOCKER_REGISTRY-}healthcareappointmentsapi
+    depends_on:
+      - healthcare.patients.api
+    build:
+      context: .
+      dockerfile: HealthCare.Appointments.Api/Dockerfile
+
+
+  healthcare.auth:
+    image: ${DOCKER_REGISTRY-}healthcareauth
+    build:
+      context: .
+      dockerfile: HealthCare.Auth/Dockerfile
+
+
+  healthcare.patients.api:
+    image: ${DOCKER_REGISTRY-}healthcarepatientsapi
+    build:
+      context: .
+      dockerfile: HealthCare.Patients.Api/Dockerfile
+
+  redis:
+    image: "redis:alpine"
+
+  mobileshoppingapigw:
+    image: ${DOCKER_REGISTRY-}healthcareapigateway
+    build:
+      context: .
+      dockerfile: HealthCare.ApiGateway/Dockerfile
+
+  webshoppingapigw:
+    image: ${DOCKER_REGISTRY-}healthcareapigateway
+    build:
+      context: .
+      dockerfile: HealthCare.ApiGateway/Dockerfile

@@ -14,7 +14,7 @@ builder.Services
     .AddAuthentication()
     .AddJwtBearer(authenticationProviderKey, x =>
     {
-        x.Authority = "https://localhost:5001";
+        x.Authority = builder.Configuration["IdentityUrl"];
                              //x.RequireHttpsMetadata = false;
         x.TokenValidationParameters = new TokenValidationParameters
         {

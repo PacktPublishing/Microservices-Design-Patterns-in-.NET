@@ -1,0 +1,82 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Patients",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5232
+        }
+      ],
+      "UpstreamPathTemplate": "/Patients",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Patients/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5232
+        }
+      ],
+      "UpstreamPathTemplate": "/Patients/{id}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "Key": "get-patient"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Appointments",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5274
+        }
+      ],
+      "UpstreamPathTemplate": "/Appointments",
+      "UpstreamHttpMethod": [
+        "POST",
+        "PUT",
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Appointments/user/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5274
+        }
+      ],
+      "UpstreamPathTemplate": "/Appointments/user/{id}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "Key": "get-patient-appointments"
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "get-patient",
+        "get-patient-appointments"
+      ],
+      "UpstreamPathTemplate": "/get-patient-details/{id}",
+      "Aggregator": "PatientAppointmentAggregator"
+    }
+  ],
+  "FileCacheOptions": {
+    "TtlSeconds": 20,
+    "Region": "SomeRegionName"
+  },
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5227"
+  }
+}
