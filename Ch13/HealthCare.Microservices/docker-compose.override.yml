@@ -43,3 +43,17 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  
+  mobilegatewaygw:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityUrl=IDENTITY_URL              
+    volumes:
+      - ./HealthCare.ApiGateway/mobile:/app/configuration
+ 
+  webhealthcaregw:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityUrl=IDENTITY_URL              
+    volumes:
+      - ./HealthCare.ApiGateway/web:/app/configuration
