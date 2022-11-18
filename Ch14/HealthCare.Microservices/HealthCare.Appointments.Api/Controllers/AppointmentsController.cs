@@ -16,19 +16,22 @@ namespace HealthCare.Appointments.Api.Controllers
         private readonly IPatientsApiRepository _patientsApiRepository;
         private readonly ApiEndpoints _apiEndpoints;
         private readonly IMapper _mapper;
+        private readonly ILogger<AppointmentsController> logger;
 
-        public AppointmentsController(AppointmentsDbContext context, IPatientsApiRepository patientsApiRepository, ApiEndpoints apiEndpoints, IMapper mapper)
+        public AppointmentsController(AppointmentsDbContext context, IPatientsApiRepository patientsApiRepository, ApiEndpoints apiEndpoints, IMapper mapper, ILogger<AppointmentsController> logger)
         {
             _context = context;
             _patientsApiRepository = patientsApiRepository;
             this._apiEndpoints = apiEndpoints;
             this._mapper = mapper;
+            this.logger = logger;
         }
 
         // GET: api/Appointments
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
         {
+            logger.LogInformation("Retrieving appointments");
             return await _context.Appointments.ToListAsync();
         }
 
@@ -36,17 +39,26 @@ namespace HealthCare.Appointments.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<AppointmentDetailsDto>> GetAppointment(Guid id)
         {
-            var appointment = await _context.Appointments.FindAsync(id);
-
-            if (appointment == null)
+            try
             {
-                return NotFound();
+                var appointment = await _context.Appointments.FindAsync(id);
+
+                if (appointment == null)
+                {
+                    return NotFound();
+                }
+                // Other service calls
+                var patient = await _patientsApiRepository.GetPatient(appointment.PatientId.ToString());
+                var appointmentDto = _mapper.Map<AppointmentDetailsDto>(appointment);
+                appointmentDto.Patient = _mapper.Map<PatientDto>(patient);
+                return appointmentDto;
             }
-            // Other service calls
-            var patient = await _patientsApiRepository.GetPatient(appointment.PatientId.ToString());
-            var appointmentDto = _mapper.Map<AppointmentDetailsDto>(appointment);
-            appointmentDto.Patient = _mapper.Map<PatientDto>(patient);
-            return appointmentDto;
+            catch (Exception ex)
+            {
+                logger.LogError(100, ex, "Failure retrieving apointment with Id: {id}", id);
+                throw;
+            }
+           
         }
 
         // PUT: api/Appointments/5

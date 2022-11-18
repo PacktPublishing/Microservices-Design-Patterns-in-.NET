@@ -15,16 +15,19 @@ namespace HealthCare.Patients.Api.Controllers
     public class PatientsController : ControllerBase
     {
         private readonly PatientsDbContext _context;
+        private readonly ILogger<PatientsController> logger;
 
-        public PatientsController(PatientsDbContext context)
+        public PatientsController(PatientsDbContext context, ILogger<PatientsController> logger)
         {
             _context = context;
+            this.logger = logger;
         }
 
         // GET: api/Patients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
+            logger.LogInformation("Retrieving Patients");
             return await _context.Patients.ToListAsync();
         }
 

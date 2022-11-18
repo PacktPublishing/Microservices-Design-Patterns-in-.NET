@@ -2,8 +2,12 @@
 using HealthCare.Patients.Api.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console()
+    .ReadFrom.Configuration(ctx.Configuration));
 
 // Add services to the container.
 builder.Services.AddDbContext<PatientsDbContext>();
@@ -52,4 +56,15 @@ app.UseAuthorization();
 
 app.MapControllers().RequireAuthorization("RequireAuth");
 
-app.Run();
+try
+{
+    app.Logger.LogWarning("Application is starting");
+    app.Run();
+
+}
+catch (Exception ex)
+{
+    app.Logger.LogCritical(ex, "Application is failed");
+
+    throw;
+}

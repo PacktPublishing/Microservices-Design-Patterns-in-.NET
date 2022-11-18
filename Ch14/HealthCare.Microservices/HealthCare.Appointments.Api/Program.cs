@@ -5,8 +5,15 @@ using HealthCare.Appointments.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using Polly;
 using Polly.Extensions.Http;
+using Microsoft.Extensions.Logging.EventLog;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole()
+    .AddEventLog(new EventLogSettings { SourceName = "Appointments Service" })
+    .AddDebug()
+    .AddEventSourceLogger(); 
+
 
 // Add services to the container.
 builder.Services.AddDbContext<AppointmentsDbContext>();
