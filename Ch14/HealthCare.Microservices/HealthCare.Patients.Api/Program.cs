@@ -28,36 +28,19 @@ builder.Services.Configure<AspNetCoreInstrumentationOptions>(options =>
     };
 });
 
-builder.Services.AddOpenTelemetryTracing(budiler =>
-{
-    budiler
-        .AddAspNetCoreInstrumentation(opt =>
-        {
-            opt.RecordException = true;
-        })
-        .SetResourceBuilder(ResourceBuilder.CreateDefault()
-            .AddService("Patients.WebAPI")
-            .AddTelemetrySdk()
-        )
-        .SetErrorStatusOnException(true)
-        .AddOtlpExporter(options =>
-        {
-            options.Endpoint = new Uri("http://localhost:4317"); // Signoz Endpoint
-        });
-});
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                // base-address of your identityserver
-                options.Authority = "https://localhost:5001/";
+    .AddJwtBearer(options =>
+    {
+        // base-address of your identityserver
+        options.Authority = "https://localhost:5001/";
 
-                // audience is optional, make sure you read the following paragraphs
-                // to understand your options
-                options.TokenValidationParameters.ValidateAudience = false;
+        // audience is optional, make sure you read the following paragraphs
+        // to understand your options
+        options.TokenValidationParameters.ValidateAudience = false;
 
-                // it's recommended to check the type header to avoid "JWT confusion" attacks
-                options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
-            });
+        // it's recommended to check the type header to avoid "JWT confusion" attacks
+        options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
+    });
 
 builder.Services.AddAuthorization(options =>
 {
