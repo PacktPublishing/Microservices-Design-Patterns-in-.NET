@@ -27,6 +27,7 @@ namespace HealthCare.Patients.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
+            throw new Exception("Test Exception");
             logger.LogInformation("Retrieving Patients");
             return await _context.Patients.ToListAsync();
         }

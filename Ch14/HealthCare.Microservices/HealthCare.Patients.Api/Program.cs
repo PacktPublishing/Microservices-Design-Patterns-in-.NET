@@ -1,6 +1,8 @@
-
 using HealthCare.Patients.Api.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using OpenTelemetry.Instrumentation.AspNetCore;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -17,6 +19,32 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<AspNetCoreInstrumentationOptions>(options =>
+{
+    options.Filter = (httpContext) =>
+    {
+        // only collect telemetry about HTTP GET requests
+        return httpContext.Request.Method.Equals("GET");
+    };
+});
+
+builder.Services.AddOpenTelemetryTracing(budiler =>
+{
+    budiler
+        .AddAspNetCoreInstrumentation(opt =>
+        {
+            opt.RecordException = true;
+        })
+        .SetResourceBuilder(ResourceBuilder.CreateDefault()
+            .AddService("Patients.WebAPI")
+            .AddTelemetrySdk()
+        )
+        .SetErrorStatusOnException(true)
+        .AddOtlpExporter(options =>
+        {
+            options.Endpoint = new Uri("http://localhost:4317"); // Signoz Endpoint
+        });
+});
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -54,7 +82,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
-app.MapControllers().RequireAuthorization("RequireAuth");
+app.MapControllers();//.RequireAuthorization("RequireAuth");
 
 try
 {
