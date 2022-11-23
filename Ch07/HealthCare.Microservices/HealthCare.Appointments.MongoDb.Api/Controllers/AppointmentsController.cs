@@ -20,6 +20,7 @@ public class AppointmentsController : ControllerBase
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Appointment>> Get(string id)
     {
+
         var appointment = await _appointmentsService.GetAsync(id);
 
         if (appointment is null)
