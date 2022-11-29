@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  mongodb_container:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    
+  healthcare.appointments.mongodb.api:
+    image: ${DOCKER_REGISTRY-}healthcareappointmentsmongodbapi
+    build:
+      context: .
+      dockerfile: HealthCare.Appointments.MongoDb.Api/Dockerfile
+    environment:
+      MongoDB__Host: mongodb_container
+    depends_on:
+      - mongodb_container
+
+  healthcare.patients.api:
+    image: ${DOCKER_REGISTRY-}healthcarepatientsapi
+    build:
+      context: .
+      dockerfile: HealthCare.Patients.Api/Dockerfile
+
+volumes:
+  mongodb_data_container:
