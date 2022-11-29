@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HealthCare.Documents.Api</name>
+    </assembly>
+    <members>
+        <member name="T:HealthCare.Documents.Api.Protos.DocumentSearchServiceReflection">
+            <summary>Holder for reflection information generated from Protos/document-search-service.proto</summary>
+        </member>
+        <member name="P:HealthCare.Documents.Api.Protos.DocumentSearchServiceReflection.Descriptor">
+            <summary>File descriptor for Protos/document-search-service.proto</summary>
+        </member>
+        <member name="T:HealthCare.Documents.Api.Protos.Document">
+            <summary>
+            Document Model
+            </summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.Document.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.Document.PatientIdFieldNumber">
+            <summary>Field number for the "patientId" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.Document.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.Document.PathFieldNumber">
+            <summary>Field number for the "path" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.AddDocument.PatientIdFieldNumber">
+            <summary>Field number for the "patientId" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.AddDocument.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.AddDocument.PathFieldNumber">
+            <summary>Field number for the "path" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.DocumentList.DocumentsFieldNumber">
+            <summary>Field number for the "documents" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.DocumentId.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="F:HealthCare.Documents.Api.Protos.PatientId.PatientId_FieldNumber">
+            <summary>Field number for the "patientId" field.</summary>
+        </member>
+        <member name="T:HealthCare.Documents.Api.Protos.DocumentService">
+            <summary>
+            Document Service
+            </summary>
+        </member>
+        <member name="P:HealthCare.Documents.Api.Protos.DocumentService.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase">
+            <summary>Base class for server-side implementations of DocumentService</summary>
+        </member>
+        <member name="M:HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase.GetAll(HealthCare.Documents.Api.Protos.PatientId,Grpc.Core.ServerCallContext)">
+            <summary>
+            Gets all documents
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase.Get(HealthCare.Documents.Api.Protos.DocumentId,Grpc.Core.ServerCallContext)">
+            <summary>
+            Gets a document
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase.Insert(HealthCare.Documents.Api.Protos.Document,Grpc.Core.ServerCallContext)">
+            <summary>
+            inserts a document
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase.Update(HealthCare.Documents.Api.Protos.Document,Grpc.Core.ServerCallContext)">
+            <summary>
+            Updates a document
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase.Delete(HealthCare.Documents.Api.Protos.DocumentId,Grpc.Core.ServerCallContext)">
+            <summary>
+            Deletes a document
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:HealthCare.Documents.Api.Protos.DocumentService.BindService(HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:HealthCare.Documents.Api.Protos.DocumentService.BindService(Grpc.Core.ServiceBinderBase,HealthCare.Documents.Api.Protos.DocumentService.DocumentServiceBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+    </members>
+</doc>

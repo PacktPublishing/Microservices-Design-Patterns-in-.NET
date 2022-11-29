@@ -2,6 +2,7 @@
 using HealthCare.Appointments.Api.Dtos;
 using HealthCare.Appointments.Api.Events;
 using HealthCare.Appointments.Api.Models;
+using HealthCare.Appointments.Api.Queries;
 using HealthCare.Appointments.Api.Service;
 using MassTransit;
 using MediatR;

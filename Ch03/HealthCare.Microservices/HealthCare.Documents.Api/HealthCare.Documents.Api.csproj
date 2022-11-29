@@ -1,26 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+	  <PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.3.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.10" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
 
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	<PackageReference Include="Google.Protobuf" Version="3.21.9" />
-	<PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
-	<PackageReference Include="Grpc.Net.Client" Version="2.49.0" />
+	<PackageReference Include="Grpc.AspNetCore" Version="2.50.0" />
+	<PackageReference Include="Grpc.Net.Client" Version="2.50.0" />
 	<PackageReference Include="Grpc.Tools" Version="2.50.0">
 		<PrivateAssets>all</PrivateAssets>
 		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -32,5 +35,4 @@
   <ItemGroup>
     <ProjectReference Include="..\HealthCare.SharedAssets\HealthCare.SharedAssets.csproj" />
   </ItemGroup>
-
 </Project>

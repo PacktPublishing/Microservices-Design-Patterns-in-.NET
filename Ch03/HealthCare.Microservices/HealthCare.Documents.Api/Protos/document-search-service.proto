@@ -3,17 +3,22 @@ syntax = "proto3";
 option csharp_namespace = "HealthCare.Documents.Api.Protos";
 
 package DocumentSearch;
-
+// Document Service
 service DocumentService {
+    // Gets all documents
   rpc GetAll (PatientId) returns (DocumentList);
+  // Gets a document
   rpc Get (DocumentId) returns (Document);
+  // inserts a document
   rpc Insert (Document) returns (Empty);
+  // Updates a document
   rpc Update (Document) returns (Empty);
+  // Deletes a document
   rpc Delete (DocumentId) returns (Empty);
 }
 
 message Empty{}
-
+// Document Model
 message Document {
   string id = 1;
   string patientId = 2;
