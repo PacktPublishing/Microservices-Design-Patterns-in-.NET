@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    volumes: 
+      - cache:/data
+
+  healthcare.appointments.api:
+    image: ${DOCKER_REGISTRY-}healthcareappointmentsapi
+    build:
+      context: .
+      dockerfile: HealthCare.Appointments.Api/Dockerfile
+
+  healthcare.patients.api:
+    image: ${DOCKER_REGISTRY-}healthcarepatientsapi
+    build:
+      context: .
+      dockerfile: HealthCare.Patients.Api/Dockerfile
+
+volumes:
+  cache:
+    driver: local
