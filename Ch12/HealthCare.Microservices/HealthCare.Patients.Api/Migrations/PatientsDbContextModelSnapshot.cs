@@ -34,7 +34,7 @@ namespace HealthCare.Patients.Api.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Documents", (string)null);
                 });
 
             modelBuilder.Entity("HealthCare.Patients.Api.Models.Patient", b =>
@@ -56,7 +56,7 @@ namespace HealthCare.Patients.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", (string)null);
                 });
 
             modelBuilder.Entity("HealthCare.Patients.Api.Models.Document", b =>
